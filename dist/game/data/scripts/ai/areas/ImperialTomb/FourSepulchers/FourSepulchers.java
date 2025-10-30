@@ -199,7 +199,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		CHARM_MSG.put(ROOM_4_CHARM_1, "The P. Atk. reduction device has now been destroyed.");
 		CHARM_MSG.put(ROOM_4_CHARM_2, "The Defense reduction device has been destroyed.");
 		CHARM_MSG.put(ROOM_4_CHARM_3, "The poison device has now been destroyed.");
-		CHARM_MSG.put(ROOM_4_CHARM_4, "The poison device has now been destroyed."); // TODO: THE_HP_REGENERATION_REDUCTION_DEVICE_WILL_BE_ACTIVATED_IN_3_MINUTES2
+		CHARM_MSG.put(ROOM_4_CHARM_4, "The HP regeneration reduction device has been destroyed.");
 	}
 	private static final String[] VICTIM_MSG =
 	{
