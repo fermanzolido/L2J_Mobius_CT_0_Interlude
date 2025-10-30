@@ -1193,9 +1193,7 @@ public abstract class Creature extends WorldObject
 				final Npc npc = asNpc();
 				if (!npc.isScriptValue(1))
 				{
-					npc.setScriptValue(1); // in combat
-					broadcastInfo(); // update flag status
-					QuestManager.getInstance().getQuest("PvpFlaggingStopTask").notifyEvent("FLAG_CHECK", npc, null);
+					npc.startPvpFlag();
 				}
 			}
 			
@@ -6159,9 +6157,7 @@ public abstract class Creature extends WorldObject
 							final Npc npc = asNpc();
 							if (!npc.isScriptValue(1))
 							{
-								npc.setScriptValue(1); // in combat
-								npc.broadcastInfo(); // update flag status
-								QuestManager.getInstance().getQuest("PvpFlaggingStopTask").notifyEvent("FLAG_CHECK", npc, null);
+								npc.startPvpFlag();
 							}
 						}
 					}

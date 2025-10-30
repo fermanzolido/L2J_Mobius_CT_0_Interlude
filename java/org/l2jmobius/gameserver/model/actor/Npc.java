@@ -2103,4 +2103,17 @@ public class Npc extends Creature
 		sb.append("]");
 		return sb.toString();
 	}
+
+	public void startPvpFlag()
+	{
+		setScriptValue(1); // in combat
+		updateAbnormalEffect(); // update flag status
+		ThreadPool.schedule(this::stopPvpFlag, 20000);
+	}
+
+	public void stopPvpFlag()
+	{
+		setScriptValue(0); // not in combat
+		updateAbnormalEffect(); // update flag status
+	}
 }
