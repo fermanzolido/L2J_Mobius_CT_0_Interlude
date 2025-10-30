@@ -36,6 +36,7 @@ import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.data.xml.SpawnData;
 import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.managers.DayNightSpawnManager;
+import org.l2jmobius.gameserver.managers.GrandBossManager;
 import org.l2jmobius.gameserver.managers.InstanceManager;
 import org.l2jmobius.gameserver.managers.QuestManager;
 import org.l2jmobius.gameserver.managers.RaidBossSpawnManager;
@@ -711,7 +712,16 @@ public class AdminSpawn implements IAdminCommandHandler
 				spawn.setInstanceId(0);
 			}
 			
-			// TODO add checks for GrandBossSpawnManager
+			try
+			{
+				GrandBossManager.getInstance().getStatus(spawn.getId());
+				activeChar.sendSysMessage("You cannot spawn another instance of " + template.getName() + ".");
+				return;
+			}
+			catch (Exception e)
+			{
+			}
+
 			if (RaidBossSpawnManager.getInstance().isDefined(spawn.getId()))
 			{
 				activeChar.sendSysMessage("You cannot spawn another instance of " + template.getName() + ".");
