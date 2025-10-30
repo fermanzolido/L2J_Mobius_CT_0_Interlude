@@ -27,6 +27,9 @@ import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Boat;
+import org.l2jmobius.commons.network.ReadableBuffer;
+import org.l2jmobius.commons.network.ReadablePacket;
+import org.l2jmobius.gameserver.network.GamePacketHandler;
 import org.l2jmobius.gameserver.network.serverpackets.AdminForgePacket;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 
@@ -582,20 +585,13 @@ public class AdminPForge implements IAdminCommandHandler
 				}
 				else if (bb != null)
 				{
-					// TODO: Implement me!
-					// @formatter:off
-					/*bb.flip();
-					GameClientPacket p = (GameClientPacket) GameServer.gameServer.getGamePacketHandler().handlePacket(bb, activeChar.getClient());
-					if (p != null)
+					bb.flip();
+					final GamePacketHandler handler = new GamePacketHandler();
+					final ReadablePacket<GameClient> packet = handler.handlePacket(new ReadableBuffer(bb), activeChar.getClient());
+					if (packet != null)
 					{
-						p.setBuffers(bb, activeChar.getClient(), new NioNetStringBuffer(2000));
-						if (p.read())
-						{
-							ThreadPoolManager.getInstance().executePacket(p);
-						}
-					}*/
-					// @formatter:on
-					throw new UnsupportedOperationException("Not implemented yet!");
+						packet.run();
+					}
 				}
 				
 				showValuesPage(activeChar, opCodes, format);
