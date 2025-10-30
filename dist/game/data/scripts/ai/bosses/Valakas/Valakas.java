@@ -65,7 +65,7 @@ public class Valakas extends AbstractNpcAI
 		new SkillHolder(4681, 1), // Valakas Trample
 		new SkillHolder(4682, 1), // Valakas Trample
 		new SkillHolder(4683, 1), // Valakas Dragon Breath
-		new SkillHolder(4689, 1), // Valakas Fear TODO: has two levels only level one is used.
+		new SkillHolder(4689, 1), // Valakas Fear
 	};
 	
 	private static final SkillHolder[] VALAKAS_LOWHP_SKILLS =
@@ -73,7 +73,7 @@ public class Valakas extends AbstractNpcAI
 		new SkillHolder(4681, 1), // Valakas Trample
 		new SkillHolder(4682, 1), // Valakas Trample
 		new SkillHolder(4683, 1), // Valakas Dragon Breath
-		new SkillHolder(4689, 1), // Valakas Fear TODO: has two levels only level one is used.
+		new SkillHolder(4689, 1), // Valakas Fear
 		new SkillHolder(4690, 1), // Valakas Meteor Storm
 	};
 	
@@ -84,7 +84,7 @@ public class Valakas extends AbstractNpcAI
 		new SkillHolder(4685, 1), // Valakas Tail Stomp
 		new SkillHolder(4686, 1), // Valakas Tail Stomp
 		new SkillHolder(4688, 1), // Valakas Stun
-		new SkillHolder(4689, 1), // Valakas Fear TODO: has two levels only level one is used.
+		new SkillHolder(4689, 2), // Valakas Fear
 		new SkillHolder(4690, 1), // Valakas Meteor Storm
 	};
 	
