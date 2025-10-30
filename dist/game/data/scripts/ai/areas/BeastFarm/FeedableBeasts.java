@@ -63,7 +63,8 @@ public class FeedableBeasts extends AbstractNpcAI
 		21451, 21452, 21453, 21454, 21455, 21456, 21457, 21458, 21459, 21460, 21461, 21462, 21463, 21464, 21465, 21466, 21467, 21468, 21469, // Alpen Kookaburra
 		21470, 21471, 21472, 21473, 21474, 21475, 21476, 21477, 21478, 21479, 21480, 21481, 21482, 21483, 21484, 21485, 21486, 21487, 21488, // Alpen Buffalo
 		21489, 21490, 21491, 21492, 21493, 21494, 21495, 21496, 21497, 21498, 21499, 21500, 21501, 21502, 21503, 21504, 21505, 21506, 21507, // Alpen Cougar
-		21824, 21825, 21826, 21827, 21828, 21829 // Alpen Kookaburra, Buffalo, Cougar
+		21824, 21825, 21826, 21827, 21828, 21829, // Alpen Kookaburra, Buffalo, Cougar
+		21450 // Alpen Grendel
 	};
 	// @formatter:on
 	
@@ -171,8 +172,10 @@ public class FeedableBeasts extends AbstractNpcAI
 		addKillId(FEEDABLE_BEASTS);
 		addSkillSeeId(FEEDABLE_BEASTS);
 		
-		// TODO: no grendels?
-		GrowthCapableMob temp;
+		// Alpen Grendel
+		// TODO: Create Grendel evolution NPCs.
+		GrowthCapableMob temp = new GrowthCapableMob(0, 0); // Grendels do not evolve for now.
+		GROWTH_CAPABLE_MONSTERS.put(21450, temp);
 		
 		// @formatter:off
 		final int[][] Kookabura_0_Gold = {{ 21452, 21453, 21454, 21455 }};
