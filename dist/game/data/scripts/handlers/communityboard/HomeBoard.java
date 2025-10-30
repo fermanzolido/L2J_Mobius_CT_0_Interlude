@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.data.xml.MultisellData;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.handler.CommunityBoardHandler;
 import org.l2jmobius.gameserver.handler.IParseBoardHandler;
+import org.l2jmobius.gameserver.managers.CastleManager;
 import org.l2jmobius.gameserver.managers.PcCafePointsManager;
 import org.l2jmobius.gameserver.managers.PremiumManager;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -366,6 +367,6 @@ public class HomeBoard implements IParseBoardHandler
 	 */
 	private static int getRegionCount(Player player)
 	{
-		return 0; // TODO: Implement.
+		return CastleManager.getInstance().getCastles().size();
 	}
 }

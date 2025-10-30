@@ -21,6 +21,10 @@
 package handlers.communityboard;
 
 import org.l2jmobius.gameserver.cache.HtmCache;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.handler.CommunityBoardHandler;
 import org.l2jmobius.gameserver.handler.IWriteBoardHandler;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -50,8 +54,25 @@ public class MemoBoard implements IWriteBoardHandler
 	@Override
 	public boolean writeCommunityBoardCommand(Player player, String arg1, String arg2, String arg3, String arg4, String arg5)
 	{
-		// TODO: Implement.
-		return false;
+		if ((arg3 == null) || arg3.isEmpty())
+		{
+			return false;
+		}
+
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("INSERT INTO `bbs_memo`(`char_id`, `memo`) VALUES (?, ?)"))
+		{
+			ps.setInt(1, player.getObjectId());
+			ps.setString(2, arg3);
+			ps.execute();
+		}
+		catch (Exception e)
+		{
+			LOG.warning(getClass().getSimpleName() + ": Coudn't save memo for " + player);
+		}
+
+		onCommand("_bbsmemo", player);
+		return true;
 	}
 	
 	@Override
