@@ -76,13 +76,9 @@ public class CastleTeleporter extends AbstractNpcAI
 			npc.getCastle().oustAllPlayers();
 			npc.setScriptValue(0);
 			
-			// TODO: Is it possible to get all the players for that region, instead of all players?
-			for (Player pl : World.getInstance().getPlayers())
+			for (Player pl : World.getInstance().getVisibleObjectsInRange(npc, Player.class, 5000))
 			{
-				if (region == MapRegionManager.getInstance().getMapRegionLocId(pl))
-				{
-					pl.sendPacket(msg);
-				}
+				pl.sendPacket(msg);
 			}
 		}
 		
