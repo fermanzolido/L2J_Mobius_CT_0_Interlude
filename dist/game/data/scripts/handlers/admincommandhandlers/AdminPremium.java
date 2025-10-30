@@ -20,6 +20,9 @@
  */
 package handlers.admincommandhandlers;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +32,7 @@ import org.l2jmobius.gameserver.handler.IAdminCommandHandler;
 import org.l2jmobius.gameserver.managers.PcCafePointsManager;
 import org.l2jmobius.gameserver.managers.PremiumManager;
 import org.l2jmobius.gameserver.model.World;
+import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.network.serverpackets.NpcHtmlMessage;
 
@@ -124,9 +128,34 @@ public class AdminPremium implements IAdminCommandHandler
 			return;
 		}
 		
-		// TODO: Add check if account exists XD
-		PremiumManager.getInstance().addPremiumTime(accountName, months * 30, TimeUnit.DAYS);
-		admin.sendMessage("Account " + accountName + " will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(accountName)) + ".");
+		try (Connection con = DatabaseFactory.getConnection())
+		{
+			if (con != null)
+			{
+				// Check if the username already exists.
+				try (PreparedStatement statement = con.prepareStatement("SELECT COUNT(*) FROM accounts WHERE login = ?"))
+				{
+					statement.setString(1, accountName);
+					try (ResultSet result = statement.executeQuery())
+					{
+						if (result.next() && (result.getInt(1) > 0))
+						{
+							PremiumManager.getInstance().addPremiumTime(accountName, months * 30, TimeUnit.DAYS);
+							admin.sendMessage("Account " + accountName + " will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(accountName)) + ".");
+						}
+						else
+						{
+							admin.sendMessage("Account " + accountName + " doesn't exist!");
+						}
+					}
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			admin.sendMessage("Error checking account existence: " + e.getMessage());
+		}
+
 		if (Config.PC_CAFE_RETAIL_LIKE)
 		{
 			for (Player player : World.getInstance().getPlayers())
