@@ -49,7 +49,6 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 	
 	private Spawn _nurka;
 	private final Map<Integer, Long> _damageToNurka = new HashMap<>();
-	private NpcHtmlMessage _messengerMsg;
 	
 	private FortressOfResistance()
 	{
@@ -57,28 +56,27 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 		addFirstTalkId(MESSENGER);
 		addKillId(BLOODY_LORD_NURKA);
 		addAttackId(BLOODY_LORD_NURKA);
-		buildMessengerMessage();
 		
 		try
 		{
 			_nurka = new Spawn(BLOODY_LORD_NURKA);
 			_nurka.setAmount(1);
 			_nurka.setRespawnDelay(10800);
-// 			@formatter:off
-// 			int chance = getRandom(100) + 1;
-// 			if (chance <= 30)
-// 			{
-// 				coords = NURKA_COORDS[0];
-// 			}
-// 			else if ((chance > 30) && (chance <= 70))
-// 			{
-// 				coords = NURKA_COORDS[1];
-// 			}
-// 			else
-// 			{
-// 				coords = NURKA_COORDS[2];
-// 			}
-// 			@formatter:on
+			// @formatter:off
+			// int chance = getRandom(100) + 1;
+			// if (chance <= 30)
+			// {
+			// coords = NURKA_COORDS[0];
+			// }
+			// else if ((chance > 30) && (chance <= 70))
+			// {
+			// coords = NURKA_COORDS[1];
+			// }
+			// else
+			// {
+			// coords = NURKA_COORDS[2];
+			// }
+			// @formatter:on
 			_nurka.setLocation(NURKA_COORDS[0]);
 		}
 		catch (Exception e)
@@ -87,22 +85,17 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 		}
 	}
 	
-	private void buildMessengerMessage()
-	{
-		final String html = HtmCache.getInstance().getHtm(null, "data/scripts/conquerablehalls/FortressOfResistance/partisan_ordery_brakel001.htm");
-		if (html != null)
-		{
-			// FIXME: We don't have an object id to put in here :(
-			_messengerMsg = new NpcHtmlMessage();
-			_messengerMsg.setHtml(html);
-			_messengerMsg.replace("%nextSiege%", TimeUtil.formatDate(_hall.getSiegeDate().getTime(), "yyyy-MM-dd HH:mm:ss"));
-		}
-	}
-	
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		player.sendPacket(_messengerMsg);
+		final NpcHtmlMessage msg = new NpcHtmlMessage(npc.getObjectId());
+		final String html = HtmCache.getInstance().getHtm(player, "data/scripts/conquerablehalls/FortressOfResistance/partisan_ordery_brakel001.htm");
+		if (html != null)
+		{
+			msg.setHtml(html);
+			msg.replace("%nextSiege%", TimeUtil.formatDate(_hall.getSiegeDate().getTime(), "yyyy-MM-dd HH:mm:ss"));
+		}
+		player.sendPacket(msg);
 		return null;
 	}
 	
