@@ -204,6 +204,11 @@ public class GrandBossManager
 		return (player != null) && (getZone(player.getX(), player.getY(), player.getZ()) != null);
 	}
 	
+	public boolean isDefined(int bossId)
+	{
+		return _bossStatus.containsKey(bossId);
+	}
+
 	public int getStatus(int bossId)
 	{
 		return _bossStatus.get(bossId);

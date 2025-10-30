@@ -509,7 +509,8 @@ public class NpcViewMod implements IBypassHandler
 					}
 					else if (item.hasExImmediateEffect())
 					{
-						// TODO: Premium herb chance? :)
+						// TODO: Add separated config for premium herb rates.
+						rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
 					}
 					else if (npc.isRaid())
 					{
@@ -526,7 +527,8 @@ public class NpcViewMod implements IBypassHandler
 					}
 					else if (item.hasExImmediateEffect())
 					{
-						// TODO: Premium herb amount? :)
+						// TODO: Add separated config for premium herb rates.
+						rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
 					}
 					else if (npc.isRaid())
 					{

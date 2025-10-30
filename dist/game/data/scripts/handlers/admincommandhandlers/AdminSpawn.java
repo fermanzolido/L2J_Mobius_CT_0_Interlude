@@ -712,17 +712,7 @@ public class AdminSpawn implements IAdminCommandHandler
 				spawn.setInstanceId(0);
 			}
 			
-			try
-			{
-				GrandBossManager.getInstance().getStatus(spawn.getId());
-				activeChar.sendSysMessage("You cannot spawn another instance of " + template.getName() + ".");
-				return;
-			}
-			catch (Exception e)
-			{
-			}
-
-			if (RaidBossSpawnManager.getInstance().isDefined(spawn.getId()))
+			if (RaidBossSpawnManager.getInstance().isDefined(spawn.getId()) || GrandBossManager.getInstance().isDefined(spawn.getId()))
 			{
 				activeChar.sendSysMessage("You cannot spawn another instance of " + template.getName() + ".");
 			}

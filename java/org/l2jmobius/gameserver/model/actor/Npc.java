@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 
 import org.l2jmobius.Config;
@@ -162,6 +163,8 @@ public class Npc extends Creature
 	
 	private volatile int _scriptValue = 0;
 	
+	private ScheduledFuture<?> _pvpFlagTask;
+
 	/** Map of summoned NPCs by this NPC. */
 	private Map<Integer, Npc> _summonedNpcs = null;
 	
@@ -1310,6 +1313,12 @@ public class Npc extends Creature
 		stopQuestTimers();
 		stopTimerHolders();
 		
+		if (_pvpFlagTask != null)
+		{
+			_pvpFlagTask.cancel(false);
+			_pvpFlagTask = null;
+		}
+
 		// Clear script value
 		_scriptValue = 0;
 	}
@@ -2106,14 +2115,21 @@ public class Npc extends Creature
 
 	public void startPvpFlag()
 	{
+		if (_pvpFlagTask != null)
+		{
+			_pvpFlagTask.cancel(false);
+			_pvpFlagTask = null;
+		}
+
 		setScriptValue(1); // in combat
 		updateAbnormalEffect(); // update flag status
-		ThreadPool.schedule(this::stopPvpFlag, 20000);
+		_pvpFlagTask = ThreadPool.schedule(this::stopPvpFlag, 20000);
 	}
 
 	public void stopPvpFlag()
 	{
 		setScriptValue(0); // not in combat
 		updateAbnormalEffect(); // update flag status
+		_pvpFlagTask = null;
 	}
 }
