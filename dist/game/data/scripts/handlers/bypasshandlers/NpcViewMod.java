@@ -514,7 +514,8 @@ public class NpcViewMod implements IBypassHandler
 					}
 					else if (npc.isRaid())
 					{
-						// TODO: Premium raid chance? :)
+						// TODO: Add separated config for premium raid rates.
+						rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
 					}
 					else
 					{
@@ -532,7 +533,8 @@ public class NpcViewMod implements IBypassHandler
 					}
 					else if (npc.isRaid())
 					{
-						// TODO: Premium raid amount? :)
+						// TODO: Add separated config for premium raid rates.
+						rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
 					}
 					else
 					{

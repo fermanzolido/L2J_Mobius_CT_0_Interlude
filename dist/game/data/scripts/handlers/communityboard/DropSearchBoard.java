@@ -273,11 +273,13 @@ public class DropSearchBoard implements IParseBoardHandler
 							}
 							else if (item.hasExImmediateEffect())
 							{
-								// TODO: Premium herb chance? :)
+								// TODO: Add separated config for premium herb rates.
+								rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
 							}
 							else if (cbDropHolder.isRaid)
 							{
-								// TODO: Premium raid chance? :)
+								// TODO: Add separated config for premium raid rates.
+								rateChance *= Config.PREMIUM_RATE_DROP_CHANCE;
 							}
 							else
 							{
@@ -290,11 +292,13 @@ public class DropSearchBoard implements IParseBoardHandler
 							}
 							else if (item.hasExImmediateEffect())
 							{
-								// TODO: Premium herb amount? :)
+								// TODO: Add separated config for premium herb rates.
+								rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
 							}
 							else if (cbDropHolder.isRaid)
 							{
-								// TODO: Premium raid amount? :)
+								// TODO: Add separated config for premium raid rates.
+								rateAmount *= Config.PREMIUM_RATE_DROP_AMOUNT;
 							}
 							else
 							{

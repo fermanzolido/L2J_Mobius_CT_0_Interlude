@@ -164,6 +164,7 @@ public class Npc extends Creature
 	private volatile int _scriptValue = 0;
 	
 	private ScheduledFuture<?> _pvpFlagTask;
+	private ScheduledFuture<?> _pvpFlagBlinkTask;
 
 	/** Map of summoned NPCs by this NPC. */
 	private Map<Integer, Npc> _summonedNpcs = null;
@@ -1319,6 +1320,12 @@ public class Npc extends Creature
 			_pvpFlagTask = null;
 		}
 
+		if (_pvpFlagBlinkTask != null)
+		{
+			_pvpFlagBlinkTask.cancel(false);
+			_pvpFlagBlinkTask = null;
+		}
+
 		// Clear script value
 		_scriptValue = 0;
 	}
@@ -2121,9 +2128,22 @@ public class Npc extends Creature
 			_pvpFlagTask = null;
 		}
 
+		if (_pvpFlagBlinkTask != null)
+		{
+			_pvpFlagBlinkTask.cancel(false);
+			_pvpFlagBlinkTask = null;
+		}
+
 		setScriptValue(1); // in combat
 		updateAbnormalEffect(); // update flag status
-		_pvpFlagTask = ThreadPool.schedule(this::stopPvpFlag, 20000);
+		_pvpFlagTask = ThreadPool.schedule(this::blinkPvpFlag, Config.PVP_NORMAL_TIME - 20000);
+	}
+
+	public void blinkPvpFlag()
+	{
+		setScriptValue(2); // blink status
+		updateAbnormalEffect(); // update flag status
+		_pvpFlagBlinkTask = ThreadPool.schedule(this::stopPvpFlag, 20000);
 	}
 
 	public void stopPvpFlag()
@@ -2131,5 +2151,6 @@ public class Npc extends Creature
 		setScriptValue(0); // not in combat
 		updateAbnormalEffect(); // update flag status
 		_pvpFlagTask = null;
+		_pvpFlagBlinkTask = null;
 	}
 }
