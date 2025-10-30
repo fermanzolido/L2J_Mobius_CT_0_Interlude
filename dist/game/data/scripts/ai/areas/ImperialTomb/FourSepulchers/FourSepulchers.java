@@ -318,8 +318,11 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 					return null;
 				}
 				
-				htmltext = getNoQuestMsg(player); // TODO: Replace with proper html?
-				break;
+				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
+				html.setFile(player, "data/scripts/ai/areas/ImperialTomb/FourSepulchers/Gatekeeper-no.html");
+				html.replace("%npcname%", npc.getName());
+				player.sendPacket(html);
+				return null;
 			}
 			case "SPAWN_MYSTERIOUS_CHEST":
 			{
