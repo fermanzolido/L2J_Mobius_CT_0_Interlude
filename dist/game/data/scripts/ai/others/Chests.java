@@ -148,7 +148,11 @@ public class Chests extends AbstractNpcAI
 				else
 				{
 					// if this weren't a box, upon interaction start the mimic behaviors...
-					// TODO: perhaps a self-buff (skill id 4245) with random chance goes here?
+					if (getRandom(100) < 50)
+					{
+						npc.setTarget(npc);
+						npc.doCast(4245, 1, false, false);
+					}
 					final Creature originalAttacker = isSummon ? attacker.getSummon() : attacker;
 					chest.setRunning();
 					chest.addDamageHate(originalAttacker, 0, (damage * 100) / (chest.getLevel() + 7));
