@@ -738,7 +738,7 @@ public class CastleChamberlain extends AbstractNpcAI
 					{
 						final NpcHtmlMessage html = getHtmlPacket(player, npc, "castlesettaxrate.html");
 						html.replace("%tax_rate%", Integer.toString(castle.getTaxPercent()));
-						html.replace("%next_tax_rate%", "0"); // TODO: Implement me!
+						html.replace("%next_tax_rate%", Integer.toString(castle.getTaxPercent()));
 						html.replace("%tax_limit%", Integer.toString(getTaxLimit()));
 						player.sendPacket(html);
 					}
@@ -747,7 +747,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					final NpcHtmlMessage html = getHtmlPacket(player, npc, "chamberlain-03.html");
 					html.replace("%tax_rate%", Integer.toString(castle.getTaxPercent()));
-					html.replace("%next_tax_rate%", "0"); // TODO: Implement me!
+					html.replace("%next_tax_rate%", Integer.toString(castle.getTaxPercent()));
 					player.sendPacket(html);
 				}
 				else
