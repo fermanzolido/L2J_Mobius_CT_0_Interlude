@@ -81,7 +81,7 @@ public class RollingDice implements IItemHandler
 		{
 			Broadcast.toKnownPlayers(player, sm);
 		}
-		else if (player.isInParty()) // TODO: Verify this!
+		else if (player.isInParty())
 		{
 			player.getParty().broadcastToPartyMembers(player, sm);
 		}
