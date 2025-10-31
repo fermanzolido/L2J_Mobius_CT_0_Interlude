@@ -100,7 +100,6 @@ public class Sow extends AbstractEffect
 	
 	private static boolean calcSuccess(Creature creature, Creature target, Seed seed)
 	{
-		// TODO: check all the chances
 		final int minlevelSeed = seed.getLevel() - 5;
 		final int maxlevelSeed = seed.getLevel() + 5;
 		final int levelPlayer = creature.getLevel(); // Attacker Level
