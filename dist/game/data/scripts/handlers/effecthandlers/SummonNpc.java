@@ -44,6 +44,7 @@ public class SummonNpc extends AbstractEffect
 	private final int _npcCount;
 	private final boolean _randomOffset;
 	private final boolean _isSummonSpawn;
+	private final int _signetSkillId;
 	
 	public SummonNpc(Condition attachCond, Condition applyCond, StatSet set, StatSet params)
 	{
@@ -54,6 +55,7 @@ public class SummonNpc extends AbstractEffect
 		_npcCount = params.getInt("npcCount", 1);
 		_randomOffset = params.getBoolean("randomOffset", false);
 		_isSummonSpawn = params.getBoolean("isSummonSpawn", false);
+		_signetSkillId = params.getInt("signetSkillId", 0);
 	}
 	
 	@Override
@@ -108,9 +110,16 @@ public class SummonNpc extends AbstractEffect
 				player.setDecoy(decoy);
 				break;
 			}
-			case "EffectPoint": // TODO: Implement proper signet skills.
+			case "EffectPoint":
 			{
-				final EffectPoint effectPoint = new EffectPoint(npcTemplate, player);
+				final Skill signetSkill = _signetSkillId > 0 ? new Skill(_signetSkillId, skill.getLevel()) : null;
+				if (signetSkill == null)
+				{
+					LOGGER.warning(SummonNpc.class.getSimpleName() + ": Not a signet skill Id: " + _signetSkillId + ", skill ID:" + skill.getId());
+					return;
+				}
+
+				final EffectPoint effectPoint = new EffectPoint(npcTemplate, player, signetSkill);
 				effectPoint.fullRestore();
 				int x = player.getX();
 				int y = player.getY();

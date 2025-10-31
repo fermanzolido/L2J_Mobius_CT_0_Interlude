@@ -21,15 +21,20 @@
 package org.l2jmobius.gameserver.model.actor.instance;
 
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.ai.CreatureAI;
+import org.l2jmobius.gameserver.ai.AbstractAI.CtrlIntention;
+import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.enums.creature.InstanceType;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 
 public class EffectPoint extends Npc
 {
 	private final Player _owner;
+	private final Skill _skill;
 	
 	/**
 	 * Creates an effect point.
@@ -37,6 +42,11 @@ public class EffectPoint extends Npc
 	 * @param owner the owner
 	 */
 	public EffectPoint(NpcTemplate template, Creature owner)
+	{
+		this(template, owner, null);
+	}
+
+	public EffectPoint(NpcTemplate template, Creature owner, Skill skill)
 	{
 		super(template);
 		setInstanceType(InstanceType.EffectPoint);
@@ -46,6 +56,29 @@ public class EffectPoint extends Npc
 		{
 			setInstanceId(owner.getInstanceId());
 		}
+		_skill = skill;
+		if (_skill != null)
+		{
+			getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, _skill, this);
+		}
+	}
+
+	@Override
+	public CreatureAI getAI()
+	{
+		CreatureAI ai = _ai;
+		if (ai == null)
+		{
+			synchronized (this)
+			{
+				ai = _ai;
+				if (ai == null)
+				{
+					_ai = ai = new CreatureAI(this);
+				}
+			}
+		}
+		return ai;
 	}
 	
 	@Override
