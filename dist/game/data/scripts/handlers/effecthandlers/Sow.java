@@ -90,7 +90,11 @@ public class Sow extends AbstractEffect
 			player.sendPacket(sm);
 		}
 		
-		// TODO: Mob should not aggro on player, this way doesn't work really nice
+		if (target.getMostHated() == player)
+		{
+			target.stopHating(player);
+			target.setTarget(null);
+		}
 		target.getAI().setIntention(Intention.IDLE);
 	}
 	
