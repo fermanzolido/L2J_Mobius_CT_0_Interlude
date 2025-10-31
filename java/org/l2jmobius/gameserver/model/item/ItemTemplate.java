@@ -169,6 +169,7 @@ public abstract class ItemTemplate extends ListenersContainer
 	private boolean _common;
 	private boolean _heroItem;
 	private boolean _pvpItem;
+	private boolean _isBlessed;
 	private boolean _immediateEffect;
 	private boolean _exImmediateEffect;
 	private int _defaultEnchantLevel;
@@ -224,6 +225,7 @@ public abstract class ItemTemplate extends ListenersContainer
 		_allowSelfResurrection = set.getBoolean("allow_self_resurrection", false);
 		_isOlyRestricted = set.getBoolean("is_oly_restricted", false);
 		_forNpc = set.getBoolean("for_npc", false);
+		_isBlessed = set.getBoolean("is_blessed", false);
 		
 		_immediateEffect = set.getBoolean("immediate_effect", false);
 		_exImmediateEffect = set.getBoolean("ex_immediate_effect", false);
@@ -677,6 +679,11 @@ public abstract class ItemTemplate extends ListenersContainer
 		return _pvpItem;
 	}
 	
+	public boolean isBlessed()
+	{
+		return _isBlessed;
+	}
+
 	public boolean isPotion()
 	{
 		return getItemType() == EtcItemType.POTION;

@@ -965,6 +965,7 @@
 		<set name="price" val="100" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="BeastSpiritShot" />
+		<set name="is_blessed" val="true" />
 		<set name="item_skill" val="2009-1" /> <!-- Item - Beast Blessed Spirit Shot -->
 		<set name="for_npc" val="true" />
 	</item>
