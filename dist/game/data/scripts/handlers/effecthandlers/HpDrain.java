@@ -18,6 +18,7 @@ package handlers.effecthandlers;
 
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.instance.Cubic;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -56,7 +57,8 @@ public class HpDrain extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		if (effector.isAlikeDead() || (skill.getId() == 4050 /* TODO: Unhardcode Cubic Skill to avoid double damage */) || effector.isAffectedByAbnormalType(AbnormalType.INVINCIBILITY) || effector.isAffectedByAbnormalType(AbnormalType.ABNORMAL_INVINCIBILITY))
+		// TODO: Unhardcode Cubic Skill to avoid double damage
+		if (effector.isAlikeDead() || (effector instanceof Cubic) || effector.isAffectedByAbnormalType(AbnormalType.INVINCIBILITY) || effector.isAffectedByAbnormalType(AbnormalType.ABNORMAL_INVINCIBILITY))
 		{
 			return;
 		}
