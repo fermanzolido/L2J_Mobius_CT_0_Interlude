@@ -6444,7 +6444,7 @@
 			<height normal="42" />
 		</collision>
 	</npc>
-	<npc id="21175" level="48" type="Monster" name="Lilim Butcher">
+	<npc id="21175" level="34" type="Monster" name="Lilim Butcher" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="75" />
 			<param name="MoveAroundSocial1" value="75" />
@@ -6535,7 +6535,7 @@
 			<height normal="36" />
 		</collision>
 	</npc>
-	<npc id="21176" level="51" type="Monster" name="Lilim Magus">
+	<npc id="21176" level="37" type="Monster" name="Lilim Magus" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="110" />
 			<param name="MoveAroundSocial1" value="110" />
@@ -6631,7 +6631,7 @@
 			<height normal="30.6" />
 		</collision>
 	</npc>
-	<npc id="21177" level="54" type="Monster" name="Lilim Knight Errant">
+	<npc id="21177" level="40" type="Monster" name="Lilim Knight-Errant" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="80" />
 			<param name="MoveAroundSocial1" value="80" />
@@ -6732,7 +6732,7 @@
 			<height normal="45" />
 		</collision>
 	</npc>
-	<npc id="21178" level="57" type="Monster" name="Lilim Marauder">
+	<npc id="21178" level="43" type="Monster" name="Lilim Marauder" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="75" />
 			<param name="MoveAroundSocial1" value="75" />
@@ -6832,7 +6832,7 @@
 			<height normal="36" />
 		</collision>
 	</npc>
-	<npc id="21179" level="60" type="Monster" name="Lilim Priest">
+	<npc id="21179" level="46" type="Monster" name="Lilim Seer" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="110" />
 			<param name="MoveAroundSocial1" value="110" />
@@ -6937,7 +6937,7 @@
 			<height normal="30.6" />
 		</collision>
 	</npc>
-	<npc id="21180" level="63" type="Monster" name="Lilim Knight">
+	<npc id="21180" level="49" type="Monster" name="Lilim Knight" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="80" />
 			<param name="MoveAroundSocial1" value="80" />
@@ -7038,7 +7038,7 @@
 			<height normal="45" />
 		</collision>
 	</npc>
-	<npc id="21181" level="66" type="Monster" name="Lilim Assassin">
+	<npc id="21181" level="52" type="Monster" name="Lilim Assassin" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="75" />
 			<param name="MoveAroundSocial1" value="75" />
@@ -7134,7 +7134,7 @@
 			<height normal="44" />
 		</collision>
 	</npc>
-	<npc id="21182" level="69" type="Monster" name="Lilim Soldier">
+	<npc id="21182" level="55" type="Monster" name="Lilim Soldier" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="110" />
 			<param name="MoveAroundSocial1" value="110" />
@@ -7235,7 +7235,7 @@
 			<height normal="37.5" />
 		</collision>
 	</npc>
-	<npc id="21183" level="72" type="Monster" name="Lilim Knight Commander">
+	<npc id="21183" level="58" type="Monster" name="Lilim Knight Commander" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="80" />
 			<param name="MoveAroundSocial1" value="80" />
@@ -7333,7 +7333,7 @@
 			<height normal="55" />
 		</collision>
 	</npc>
-	<npc id="21184" level="75" type="Monster" name="Lilim Slayer">
+	<npc id="21184" level="61" type="Monster" name="Lilim Slayer" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="75" />
 			<param name="MoveAroundSocial1" value="75" />
@@ -7434,7 +7434,7 @@
 			<height normal="44" />
 		</collision>
 	</npc>
-	<npc id="21185" level="78" type="Monster" name="Lilim Great Mystic">
+	<npc id="21185" level="64" type="Monster" name="Lilim Great Magus" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="110" />
 			<param name="MoveAroundSocial1" value="110" />
@@ -7534,7 +7534,7 @@
 			<height normal="37.5" />
 		</collision>
 	</npc>
-	<npc id="21186" level="80" type="Monster" name="Lilim Court Knight">
+	<npc id="21186" level="67" type="Monster" name="Lilim Guard Knight" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="80" />
 			<param name="MoveAroundSocial1" value="80" />
@@ -8442,7 +8442,7 @@
 			<height normal="42.5" />
 		</collision>
 	</npc>
-	<npc id="21196" level="48" type="Monster" name="Nephilim Sentinel">
+	<npc id="21196" level="48" type="Monster" name="Nephilim Sentinel" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="71" />
 			<param name="MoveAroundSocial1" value="71" />
@@ -8530,7 +8530,7 @@
 			<height normal="32.4" />
 		</collision>
 	</npc>
-	<npc id="21197" level="51" type="Monster" name="Nephilim Priest">
+	<npc id="21197" level="51" type="Monster" name="Nephilim Priest" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="0" />
 			<param name="MoveAroundSocial1" value="0" />
@@ -8625,7 +8625,7 @@
 			<height normal="36.5" grown="46" />
 		</collision>
 	</npc>
-	<npc id="21198" level="54" type="Monster" name="Nephilim Swordsman">
+	<npc id="21198" level="54" type="Monster" name="Nephilim Swordsman" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="70" />
 			<param name="MoveAroundSocial1" value="70" />
@@ -8724,7 +8724,7 @@
 			<height normal="39" grown="46.8" />
 		</collision>
 	</npc>
-	<npc id="21199" level="57" type="Monster" name="Nephilim Guard">
+	<npc id="21199" level="57" type="Monster" name="Nephilim Guard" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="71" />
 			<param name="MoveAroundSocial1" value="71" />

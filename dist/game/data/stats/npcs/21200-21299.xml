@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/npcs.xsd">
-	<npc id="21200" level="60" type="Monster" name="Nephilim Bishop">
+	<npc id="21200" level="60" type="Monster" name="Nephilim Bishop" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="0" />
 			<param name="MoveAroundSocial1" value="0" />
@@ -105,7 +105,7 @@
 			<height normal="36.5" grown="46" />
 		</collision>
 	</npc>
-	<npc id="21201" level="63" type="Monster" name="Nephilim Centurion">
+	<npc id="21201" level="63" type="Monster" name="Nephilim Centurion" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="70" />
 			<param name="MoveAroundSocial1" value="70" />
@@ -205,7 +205,7 @@
 			<height normal="39" grown="46.8" />
 		</collision>
 	</npc>
-	<npc id="21202" level="66" type="Monster" name="Nephilim Scout">
+	<npc id="21202" level="66" type="Monster" name="Nephilim Scout" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="71" />
 			<param name="MoveAroundSocial1" value="71" />
@@ -298,7 +298,7 @@
 			<height normal="39.6" />
 		</collision>
 	</npc>
-	<npc id="21203" level="69" type="Monster" name="Nephilim Archbishop">
+	<npc id="21203" level="69" type="Monster" name="Nephilim Archbishop" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="0" />
 			<param name="MoveAroundSocial1" value="0" />
@@ -400,7 +400,7 @@
 			<height normal="44" grown="56" />
 		</collision>
 	</npc>
-	<npc id="21204" level="72" type="Monster" name="Nephilim Praetorian">
+	<npc id="21204" level="72" type="Monster" name="Nephilim Praetorian" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="70" />
 			<param name="MoveAroundSocial1" value="70" />
@@ -496,7 +496,7 @@
 			<height normal="48" grown="57.6" />
 		</collision>
 	</npc>
-	<npc id="21205" level="75" type="Monster" name="Nephilim Royal Guard">
+	<npc id="21205" level="75" type="Monster" name="Nephilim Royal Guard" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="71" />
 			<param name="MoveAroundSocial1" value="71" />
@@ -588,7 +588,7 @@
 			<height normal="39.6" />
 		</collision>
 	</npc>
-	<npc id="21206" level="78" type="Monster" name="Nephilim Cardinal">
+	<npc id="21206" level="78" type="Monster" name="Nephilim Cardinal" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="0" />
 			<param name="MoveAroundSocial1" value="0" />
@@ -693,7 +693,7 @@
 			<height normal="44" grown="56" />
 		</collision>
 	</npc>
-	<npc id="21207" level="80" type="Monster" name="Nephilim Commander">
+	<npc id="21207" level="80" type="Monster" name="Nephilim Commander" ai_type="SevenSignsDungeonMob">
 		<parameters>
 			<param name="MoveAroundSocial" value="70" />
 			<param name="MoveAroundSocial1" value="70" />
