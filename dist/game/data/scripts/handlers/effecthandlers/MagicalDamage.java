@@ -24,6 +24,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.instance.Cubic;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
@@ -58,8 +59,8 @@ public class MagicalDamage extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		// TODO: Unhardcode Cubic Skill to avoid double damage
-		if (effector.isAlikeDead() || (skill.getId() == 4049))
+		// TODO: Prevents double damage for all cubic skills.
+		if (effector.isAlikeDead() || (effector instanceof Cubic))
 		{
 			return;
 		}
