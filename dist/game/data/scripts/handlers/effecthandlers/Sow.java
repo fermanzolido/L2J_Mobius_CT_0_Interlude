@@ -100,38 +100,25 @@ public class Sow extends AbstractEffect
 	
 	private static boolean calcSuccess(Creature creature, Creature target, Seed seed)
 	{
-		final int minlevelSeed = seed.getLevel() - 5;
-		final int maxlevelSeed = seed.getLevel() + 5;
-		final int levelPlayer = creature.getLevel(); // Attacker Level
-		final int levelTarget = target.getLevel(); // target Level
+		final int levelTarget = target.getLevel();
 		int basicSuccess = seed.isAlternative() ? 20 : 90;
 		
-		// seed level
-		if (levelTarget < minlevelSeed)
+		// Penalty for level difference between target and seed.
+		final int seedLevelDiff = Math.abs(levelTarget - seed.getLevel());
+		if (seedLevelDiff > 5)
 		{
-			basicSuccess -= 5 * (minlevelSeed - levelTarget);
+			basicSuccess -= 5 * (seedLevelDiff - 5);
 		}
 		
-		if (levelTarget > maxlevelSeed)
+		// Penalty for level difference between player and target.
+		final int playerLevelDiff = Math.abs(creature.getLevel() - levelTarget);
+		if (playerLevelDiff > 5)
 		{
-			basicSuccess -= 5 * (levelTarget - maxlevelSeed);
+			basicSuccess -= 5 * (playerLevelDiff - 5);
 		}
 		
-		// 5% decrease in chance if player level
-		// is more than +/- 5 levels to _target's_ level
-		int diff = (levelPlayer - levelTarget);
-		if (diff < 0)
-		{
-			diff = -diff;
-		}
-		
-		if (diff > 5)
-		{
-			basicSuccess -= 5 * (diff - 5);
-		}
-		
-		// chance can't be less than 1%
-		Math.max(basicSuccess, 1);
-		return Rnd.get(99) < basicSuccess;
+		// Final chance is capped between 1% and 100%.
+		basicSuccess = Math.max(basicSuccess, 1);
+		return Rnd.get(100) < basicSuccess;
 	}
 }
