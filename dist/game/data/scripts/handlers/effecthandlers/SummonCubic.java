@@ -84,15 +84,17 @@ public class SummonCubic extends AbstractEffect
 			return;
 		}
 		
-		// Gnacik: TODO: Make better method of calculation.
-		// If skill is enchanted calculate cubic skill level based on enchant
-		// 8 at 101 (+1 Power)
-		// 12 at 130 (+30 Power)
-		// Because 12 is max 5115-5117 skills
+		// If skill is enchanted, calculate cubic skill level based on enchant level.
+		// Level 8 at skill level 101 (+1 Power)
+		// Level 12 at skill level 130 (+30 Power)
 		int cubicSkillLevel = skill.getLevel();
 		if (cubicSkillLevel > 100)
 		{
-			cubicSkillLevel = ((skill.getLevel() - 100) / 7) + 8;
+			final int ENCHANT_SKILL_LEVEL_BASE = 100;
+			final int ENCHANT_LEVEL_DIVISOR = 7;
+			final int CUBIC_ENCHANT_START_LEVEL = 8;
+			final int CUBIC_ENCHANT_MAX_LEVEL = 12;
+			cubicSkillLevel = Math.min(CUBIC_ENCHANT_MAX_LEVEL, (((skill.getLevel() - ENCHANT_SKILL_LEVEL_BASE) / ENCHANT_LEVEL_DIVISOR) + CUBIC_ENCHANT_START_LEVEL));
 		}
 		
 		// If cubic is already present, it's replaced.
