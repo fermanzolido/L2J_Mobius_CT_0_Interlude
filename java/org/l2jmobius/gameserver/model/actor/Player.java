@@ -13741,7 +13741,7 @@ public class Player extends Playable
 	
 	public void disableExpGain()
 	{
-		addListener(new FunctionEventListener(this, EventType.ON_PLAYABLE_EXP_CHANGED, (OnPlayableExpChanged _) -> onExperienceReceived(), this));
+		addListener(new FunctionEventListener(this, EventType.ON_PLAYABLE_EXP_CHANGED, (OnPlayableExpChanged event) -> onExperienceReceived(), this));
 	}
 	
 	public void enableExpGain()

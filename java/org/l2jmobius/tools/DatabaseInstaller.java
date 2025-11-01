@@ -197,12 +197,12 @@ public class DatabaseInstaller extends JFrame
 		leftPanel.add(_gameDbCheckBox);
 		
 		// Add listeners to both checkboxes to monitor their state.
-		_loginDbCheckBox.addItemListener(_ -> checkCheckboxesAndUpdateButtonState());
-		_gameDbCheckBox.addItemListener(_ -> checkCheckboxesAndUpdateButtonState());
+		_loginDbCheckBox.addItemListener(e -> checkCheckboxesAndUpdateButtonState());
+		_gameDbCheckBox.addItemListener(e -> checkCheckboxesAndUpdateButtonState());
 		
 		// Test Connection Button.
 		_testConnectionButton = new JButton("Test Connection");
-		_testConnectionButton.addActionListener(_ -> testDatabaseConnection());
+		_testConnectionButton.addActionListener(e -> testDatabaseConnection());
 		leftPanel.add(Box.createVerticalStrut(5));
 		_testConnectionButton.setPreferredSize(new Dimension(200, 30));
 		_testConnectionButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -210,7 +210,7 @@ public class DatabaseInstaller extends JFrame
 		
 		// Install Button.
 		_installButton = new JButton("Install Database");
-		_installButton.addActionListener(_ -> installDatabase());
+		_installButton.addActionListener(e -> installDatabase());
 		leftPanel.add(Box.createVerticalStrut(5));
 		_installButton.setPreferredSize(new Dimension(200, 30));
 		_installButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
@@ -488,7 +488,7 @@ public class DatabaseInstaller extends JFrame
 			return false;
 		}
 		
-		final File[] sqlFiles = dir.listFiles((_, name) -> name.endsWith(".sql"));
+		final File[] sqlFiles = dir.listFiles((d, name) -> name.endsWith(".sql"));
 		if ((sqlFiles == null) || (sqlFiles.length == 0))
 		{
 			System.out.println("[ERROR] No SQL files found in directory: " + dir.getAbsolutePath());
@@ -642,7 +642,7 @@ public class DatabaseInstaller extends JFrame
 	{
 		final String dbUrlWithoutDb = "jdbc:mysql://" + host + ":" + port;
 		
-		try (Connection _ = DriverManager.getConnection(dbUrlWithoutDb, user, password))
+		try (Connection connection = DriverManager.getConnection(dbUrlWithoutDb, user, password))
 		{
 			return true;
 		}
@@ -746,7 +746,7 @@ public class DatabaseInstaller extends JFrame
 		}
 		
 		// Get all .sql files in the directory.
-		final File[] sqlFiles = dir.listFiles((_, name) -> name.endsWith(".sql"));
+		final File[] sqlFiles = dir.listFiles((d, name) -> name.endsWith(".sql"));
 		if ((sqlFiles == null) || (sqlFiles.length == 0))
 		{
 			installationProgress("No SQL files found in directory: " + dir.getAbsolutePath() + System.lineSeparator(), "Error");

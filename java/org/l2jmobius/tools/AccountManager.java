@@ -167,7 +167,7 @@ public class AccountManager extends JFrame
 		_tabPanel.addTab("📜 List Accounts", null, listAccountsPanel(), "View all registered accounts.");
 		
 		// Listener to ensure page is loaded when switching to List Accounts.
-		_tabPanel.addChangeListener(_ ->
+		_tabPanel.addChangeListener(e ->
 		{
 			final int selectedIndex = _tabPanel.getSelectedIndex();
 			if (selectedIndex == 2)
@@ -254,7 +254,7 @@ public class AccountManager extends JFrame
 		});
 		_addAccessLevelBox.setEnabled(false);
 		_addAccessLevelBox.setToolTipText("Select the access level for the account.");
-		_accessLevelCheckBox.addActionListener(_ -> _addAccessLevelBox.setEnabled(_accessLevelCheckBox.isSelected()));
+		_accessLevelCheckBox.addActionListener(e -> _addAccessLevelBox.setEnabled(_accessLevelCheckBox.isSelected()));
 		
 		accessLevelPanel.add(_accessLevelCheckBox);
 		accessLevelPanel.add(_addAccessLevelBox);
@@ -453,7 +453,7 @@ public class AccountManager extends JFrame
 		gbc.gridx = 2;
 		_searchButton = new JButton("Search 🔍");
 		_searchButton.setEnabled(false); // Initially disabled until 2 characters are typed.
-		_searchButton.addActionListener(_ -> searchAccount(_searchAccount.getText()));
+		_searchButton.addActionListener(e -> searchAccount(_searchAccount.getText()));
 		centerPanel.add(_searchButton, gbc);
 		
 		// Account selection dropdown (Will be populated after search).
@@ -466,7 +466,7 @@ public class AccountManager extends JFrame
 		_accuntSelcet.setPreferredSize(new Dimension(200, 25));
 		_accuntSelcet.setToolTipText("Select an account.");
 		_accuntSelcet.setEnabled(false); // Initially disabled until account is found.
-		_accuntSelcet.addActionListener(_ ->
+		_accuntSelcet.addActionListener(e ->
 		{
 			// Enable password field when an account is selected.
 			if (_accuntSelcet.getSelectedItem() != null)
@@ -612,15 +612,15 @@ public class AccountManager extends JFrame
 		
 		_refreshButton = new JButton("Refresh ♻️");
 		_refreshButton.setToolTipText("Reload the account list");
-		_refreshButton.addActionListener(_ -> refreshAccountsList());
+		_refreshButton.addActionListener(e -> refreshAccountsList());
 		
 		final JPanel paginationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		_prevButton = new JButton("⬅️ Previous");
 		_nextButton = new JButton("Next ➡️");
 		_prevButton.setToolTipText("Go to the previous page");
 		_nextButton.setToolTipText("Go to the next page");
-		_prevButton.addActionListener(_ -> loadPage(currentPage - 1));
-		_nextButton.addActionListener(_ -> loadPage(currentPage + 1));
+		_prevButton.addActionListener(e -> loadPage(currentPage - 1));
+		_nextButton.addActionListener(e -> loadPage(currentPage + 1));
 		
 		paginationPanel.add(_prevButton);
 		paginationPanel.add(_nextButton);
@@ -881,7 +881,7 @@ public class AccountManager extends JFrame
 			_selectedAccount.setText("");
 			_updateButton.setEnabled(true);
 			_deleteButton.setEnabled(true);
-			_accuntSelcet.addActionListener(_ ->
+			_accuntSelcet.addActionListener(e ->
 			{
 				final String selectedAccount = (String) _accuntSelcet.getSelectedItem();
 				if (selectedAccount != null)

@@ -223,7 +223,7 @@ public class Search extends JFrame
 		// Add the caseSensitiveCheckBox to the EAST (right side).
 		final JCheckBox caseSensitiveCheckBox = new JCheckBox("Case Sensitive", !_caseInsensitive);
 		searchTextPanel.add(caseSensitiveCheckBox, BorderLayout.EAST);
-		caseSensitiveCheckBox.addItemListener(_ ->
+		caseSensitiveCheckBox.addItemListener(e ->
 		{
 			_caseInsensitive = !caseSensitiveCheckBox.isSelected();
 		});
@@ -252,7 +252,7 @@ public class Search extends JFrame
 		checkBoxPanel.add(centerPanel, BorderLayout.CENTER);
 		
 		// Add item listeners to checkboxes.
-		_allCheckBox.addItemListener(_ ->
+		_allCheckBox.addItemListener(e ->
 		{
 			final boolean isSelected = _allCheckBox.isSelected();
 			_iniCheckBox.setSelected(isSelected);
@@ -263,7 +263,7 @@ public class Search extends JFrame
 		});
 		
 		// Add item listeners to individual checkboxes to deselect "All" when any is deselected.
-		final ItemListener checkboxListener = _ ->
+		final ItemListener checkboxListener = e ->
 		{
 			final boolean isIniCheckBoxSelected = _iniCheckBox.isSelected();
 			final boolean isXmlCheckBoxSelected = _xmlCheckBox.isSelected();
@@ -361,7 +361,7 @@ public class Search extends JFrame
 		add(bottomPanel, BorderLayout.SOUTH); // Add the combined panel to the SOUTH region.
 		
 		// Add action listeners.
-		_searchButton.addActionListener(_ -> performGuiSearch());
+		_searchButton.addActionListener(e -> performGuiSearch());
 		
 		final JPopupMenu popupMenu = new JPopupMenu();
 		final JMenuItem openWithMenuItem = new JMenuItem("Open File");
@@ -376,23 +376,23 @@ public class Search extends JFrame
 		popupMenu.add(propertiesMenuItem);
 		
 		// Add action listeners.
-		openWithMenuItem.addActionListener(_ ->
+		openWithMenuItem.addActionListener(e ->
 		{
 			for (String filePath : _selectedFilePaths)
 			{
 				openFile(filePath);
 			}
 		});
-		copyFileMenuItem.addActionListener(_ -> copyFile(_selectedFilePaths));
-		openLocationMenuItem.addActionListener(_ ->
+		copyFileMenuItem.addActionListener(e -> copyFile(_selectedFilePaths));
+		openLocationMenuItem.addActionListener(e ->
 		{
 			for (String filePath : _selectedFilePaths)
 			{
 				openFileLocation(filePath);
 			}
 		});
-		copyLocationMenuItem.addActionListener(_ -> copyFileLocation(_selectedFilePaths));
-		propertiesMenuItem.addActionListener(_ ->
+		copyLocationMenuItem.addActionListener(e -> copyFileLocation(_selectedFilePaths));
+		propertiesMenuItem.addActionListener(e ->
 		{
 			for (String filePath : _selectedFilePaths)
 			{

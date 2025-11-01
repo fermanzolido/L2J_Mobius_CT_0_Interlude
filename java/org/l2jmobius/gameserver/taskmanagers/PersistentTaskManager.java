@@ -179,7 +179,7 @@ public class PersistentTaskManager
 	
 	private void registerTask(PersistentTask task)
 	{
-		_tasks.computeIfAbsent(task.getName().hashCode(), _ ->
+		_tasks.computeIfAbsent(task.getName().hashCode(), key ->
 		{
 			task.initializate();
 			return task;

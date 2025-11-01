@@ -84,7 +84,7 @@ public class SpawnTable
 	 */
 	public void addSpawn(Spawn spawn)
 	{
-		_npcSpawns.computeIfAbsent(spawn.getId(), _ -> ConcurrentHashMap.newKeySet(1)).add(spawn);
+		_npcSpawns.computeIfAbsent(spawn.getId(), id -> ConcurrentHashMap.newKeySet(1)).add(spawn);
 	}
 	
 	/**

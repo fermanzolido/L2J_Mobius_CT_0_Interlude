@@ -165,7 +165,7 @@ public class AntiFeedManager
 		}
 		
 		final Integer addrHash = client.getIp().hashCode();
-		final AtomicInteger connectionCount = event.computeIfAbsent(addrHash, _ -> new AtomicInteger());
+		final AtomicInteger connectionCount = event.computeIfAbsent(addrHash, key -> new AtomicInteger());
 		if ((connectionCount.get() + 1) <= (max + Config.DUALBOX_CHECK_WHITELIST.getOrDefault(addrHash, 0)))
 		{
 			connectionCount.incrementAndGet();
@@ -206,7 +206,7 @@ public class AntiFeedManager
 		}
 		
 		final Integer addrHash = client.getIp().hashCode();
-		return event.computeIfPresent(addrHash, (_, v) ->
+		return event.computeIfPresent(addrHash, (key, v) ->
 		{
 			if ((v == null) || (v.decrementAndGet() == 0))
 			{

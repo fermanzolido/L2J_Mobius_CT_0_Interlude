@@ -2703,7 +2703,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				
 				if (!ids.isEmpty())
 				{
-					_registeredIds.computeIfAbsent(type, _ -> ConcurrentHashMap.newKeySet()).addAll(ids);
+					_registeredIds.computeIfAbsent(type, t -> ConcurrentHashMap.newKeySet()).addAll(ids);
 				}
 				
 				registerAnnotation(method, eventType, type, priority, ids);
@@ -3874,7 +3874,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 					}
 				}
 				
-				_registeredIds.computeIfAbsent(registerType, _ -> ConcurrentHashMap.newKeySet()).add(id);
+				_registeredIds.computeIfAbsent(registerType, t -> ConcurrentHashMap.newKeySet()).add(id);
 			}
 		}
 		else
@@ -3977,7 +3977,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				}
 			}
 			
-			_registeredIds.computeIfAbsent(registerType, _ -> ConcurrentHashMap.newKeySet()).addAll(ids);
+			_registeredIds.computeIfAbsent(registerType, t -> ConcurrentHashMap.newKeySet()).addAll(ids);
 		}
 		else
 		{

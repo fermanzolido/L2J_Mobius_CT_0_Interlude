@@ -483,7 +483,7 @@ public class LongTimeEvent extends Quest
 	/**
 	 * Event spawns must initialize after server loads scripts.
 	 */
-	private final Consumer<OnServerStart> _spawnNpcs = _ ->
+	private final Consumer<OnServerStart> _spawnNpcs = event ->
 	{
 		spawnNpcs();
 		Containers.Global().removeListenerIf(EventType.ON_SERVER_START, listener -> listener.getOwner() == this);

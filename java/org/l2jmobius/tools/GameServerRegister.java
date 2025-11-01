@@ -153,10 +153,10 @@ public class GameServerRegister extends JFrame
 		_buttonPanel.add(_btnRemove);
 		_buttonPanel.add(_btnRemoveAll);
 		
-		_btnList.addActionListener(_ -> serversList());
-		_btnRegister.addActionListener(_ -> registerServer());
-		_btnRemove.addActionListener(_ -> unregisterServer());
-		_btnRemoveAll.addActionListener(_ -> unregisterAllServers());
+		_btnList.addActionListener(e -> serversList());
+		_btnRegister.addActionListener(e -> registerServer());
+		_btnRemove.addActionListener(e -> unregisterServer());
+		_btnRemoveAll.addActionListener(e -> unregisterAllServers());
 		
 		// Create the JTable for displaying server names.
 		final String[] columnNames =
@@ -208,7 +208,7 @@ public class GameServerRegister extends JFrame
 					
 					// Create "Register" menu item.
 					final JMenuItem registerItem = new JMenuItem("Register Server");
-					registerItem.addActionListener(_ ->
+					registerItem.addActionListener(e ->
 					{
 						final int serverId = (Integer) _serverTable.getValueAt(row, 0);
 						final String serverName = (String) _serverTable.getValueAt(row, 1);
@@ -241,7 +241,7 @@ public class GameServerRegister extends JFrame
 					
 					// Create "Unregister" menu item.
 					final JMenuItem unregisterItem = new JMenuItem("Unregister Server");
-					unregisterItem.addActionListener(_ ->
+					unregisterItem.addActionListener(e ->
 					{
 						final int serverId = (Integer) _serverTable.getValueAt(row, 0);
 						final String serverName = (String) _serverTable.getValueAt(row, 1);

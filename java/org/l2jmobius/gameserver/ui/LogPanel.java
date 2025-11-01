@@ -154,7 +154,7 @@ public class LogPanel extends JFrame
 			_fileComboBox.setToolTipText("Select a log file.");
 			
 			// Don't load contents if deleteMode is active.
-			_fileComboBox.addActionListener(_ ->
+			_fileComboBox.addActionListener(e ->
 			{
 				if (!deleteMode)
 				{
@@ -172,7 +172,7 @@ public class LogPanel extends JFrame
 			deleteButton.setForeground(Color.WHITE);
 			deleteButton.setPreferredSize(new Dimension(110, 30));
 			deleteButton.setEnabled(false);
-			deleteButton.addActionListener(_ ->
+			deleteButton.addActionListener(e ->
 			{
 				// Show the progress bar when delete action starts.
 				_progressBar.setValue(0);
@@ -182,7 +182,7 @@ public class LogPanel extends JFrame
 				});
 			});
 			
-			_fileComboBox.addActionListener(_ ->
+			_fileComboBox.addActionListener(e ->
 			{
 				final String selectedFile = (String) _fileComboBox.getSelectedItem();
 				if (selectedFile == null)
@@ -247,7 +247,7 @@ public class LogPanel extends JFrame
 			floatingPanel.add(_fileSizeLabel, gbc);
 			
 			// Smooth transition effect for changing the file.
-			_fileComboBox.addActionListener(_ ->
+			_fileComboBox.addActionListener(e ->
 			{
 				final String selectedFile = (String) _fileComboBox.getSelectedItem();
 				new Thread(() ->
@@ -301,7 +301,7 @@ public class LogPanel extends JFrame
 			_fileComboBox.setToolTipText("Select a log file.");
 			
 			// If we're not in deleteMode, load logs when selected.
-			_fileComboBox.addActionListener(_ -> loadLogs());
+			_fileComboBox.addActionListener(e -> loadLogs());
 			
 			topPanel.add(new JLabel("Log File: "));
 			topPanel.add(_fileComboBox);
@@ -312,12 +312,12 @@ public class LogPanel extends JFrame
 				_searchField = new JTextField(15);
 				_searchField.setToolTipText("Enter search term.");
 				_searchField.setPreferredSize(new Dimension(150, 28));
-				_searchField.addActionListener(_ -> searchLogs());
+				_searchField.addActionListener(e -> searchLogs());
 				
 				_searchButton = new JButton("🔍");
 				_searchButton.setToolTipText("Click to search.");
 				_searchButton.setPreferredSize(new Dimension(50, 28));
-				_searchButton.addActionListener(_ -> searchLogs());
+				_searchButton.addActionListener(e -> searchLogs());
 				
 				topPanel.add(new JLabel("🔍 Search: "));
 				topPanel.add(_searchField);

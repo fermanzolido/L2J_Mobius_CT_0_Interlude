@@ -50,7 +50,7 @@ public class ListenersContainer
 			throw new NullPointerException("Listener cannot be null!");
 		}
 		
-		getListeners().computeIfAbsent(listener.getType(), _ -> new PriorityBlockingQueue<>()).add(listener);
+		getListeners().computeIfAbsent(listener.getType(), type -> new PriorityBlockingQueue<>()).add(listener);
 		return listener;
 	}
 	

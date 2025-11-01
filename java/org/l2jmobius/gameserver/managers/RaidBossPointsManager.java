@@ -96,7 +96,7 @@ public class RaidBossPointsManager
 	
 	public void addPoints(Player player, int bossId, int points)
 	{
-		final Map<Integer, Integer> tmpPoint = _list.computeIfAbsent(player.getObjectId(), _ -> new HashMap<>());
+		final Map<Integer, Integer> tmpPoint = _list.computeIfAbsent(player.getObjectId(), id -> new HashMap<>());
 		updatePointsInDB(player, bossId, tmpPoint.merge(bossId, points, Integer::sum));
 	}
 	

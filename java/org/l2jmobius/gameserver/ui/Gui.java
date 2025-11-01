@@ -114,7 +114,7 @@ public class Gui
 		
 		final JMenuItem mntmShutdown = new JMenuItem("Shutdown");
 		mntmShutdown.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmShutdown.addActionListener(_ ->
+		mntmShutdown.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Shutdown GameServer?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, SHUTDOWN_OPTIONS, SHUTDOWN_OPTIONS[1]) == 0)
 			{
@@ -137,7 +137,7 @@ public class Gui
 		
 		final JMenuItem mntmRestart = new JMenuItem("Restart");
 		mntmRestart.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmRestart.addActionListener(_ ->
+		mntmRestart.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Restart GameServer?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, RESTART_OPTIONS, RESTART_OPTIONS[1]) == 0)
 			{
@@ -160,7 +160,7 @@ public class Gui
 		
 		final JMenuItem mntmAbort = new JMenuItem("Abort");
 		mntmAbort.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmAbort.addActionListener(_ ->
+		mntmAbort.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Abort server shutdown?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, ABORT_OPTIONS, ABORT_OPTIONS[1]) == 0)
 			{
@@ -175,7 +175,7 @@ public class Gui
 		
 		final JMenuItem mntmConfigs = new JMenuItem("Configs");
 		mntmConfigs.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmConfigs.addActionListener(_ ->
+		mntmConfigs.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Reload configs?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, CONFIRM_OPTIONS, CONFIRM_OPTIONS[1]) == 0)
 			{
@@ -186,7 +186,7 @@ public class Gui
 		
 		final JMenuItem mntmAccess = new JMenuItem("Access");
 		mntmAccess.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmAccess.addActionListener(_ ->
+		mntmAccess.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Reload admin access levels?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, CONFIRM_OPTIONS, CONFIRM_OPTIONS[1]) == 0)
 			{
@@ -197,7 +197,7 @@ public class Gui
 		
 		final JMenuItem mntmHtml = new JMenuItem("HTML");
 		mntmHtml.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmHtml.addActionListener(_ ->
+		mntmHtml.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Reload HTML files?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, CONFIRM_OPTIONS, CONFIRM_OPTIONS[1]) == 0)
 			{
@@ -208,7 +208,7 @@ public class Gui
 		
 		final JMenuItem mntmMultisells = new JMenuItem("Multisells");
 		mntmMultisells.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmMultisells.addActionListener(_ ->
+		mntmMultisells.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Reload multisells?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, CONFIRM_OPTIONS, CONFIRM_OPTIONS[1]) == 0)
 			{
@@ -219,7 +219,7 @@ public class Gui
 		
 		final JMenuItem mntmBuylists = new JMenuItem("Buylists");
 		mntmBuylists.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmBuylists.addActionListener(_ ->
+		mntmBuylists.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Reload buylists?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, CONFIRM_OPTIONS, CONFIRM_OPTIONS[1]) == 0)
 			{
@@ -234,7 +234,7 @@ public class Gui
 		
 		final JMenuItem mntmNormal = new JMenuItem("Normal");
 		mntmNormal.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmNormal.addActionListener(_ ->
+		mntmNormal.addActionListener(e ->
 		{
 			final Object input = JOptionPane.showInputDialog(null, "Announce message", "Input", JOptionPane.INFORMATION_MESSAGE, null, null, "");
 			if (input != null)
@@ -250,7 +250,7 @@ public class Gui
 		
 		final JMenuItem mntmCritical = new JMenuItem("Critical");
 		mntmCritical.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmCritical.addActionListener(_ ->
+		mntmCritical.addActionListener(e ->
 		{
 			final Object input = JOptionPane.showInputDialog(null, "Critical announce message", "Input", JOptionPane.INFORMATION_MESSAGE, null, null, "");
 			if (input != null)
@@ -270,12 +270,12 @@ public class Gui
 		
 		final JMenuItem mntmLogs = new JMenuItem("View");
 		mntmLogs.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmLogs.addActionListener(_ -> new LogPanel(false));
+		mntmLogs.addActionListener(e -> new LogPanel(false));
 		mnLogs.add(mntmLogs);
 		
 		final JMenuItem mntmDeleteLogs = new JMenuItem("Delete");
 		mntmDeleteLogs.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmDeleteLogs.addActionListener(_ -> new LogPanel(true));
+		mntmDeleteLogs.addActionListener(e -> new LogPanel(true));
 		mnLogs.add(mntmDeleteLogs);
 		
 		final JMenu mnFont = new JMenu("Font");
@@ -293,7 +293,7 @@ public class Gui
 		{
 			final JMenuItem mntmFont = new JMenuItem(font);
 			mntmFont.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-			mntmFont.addActionListener(_ -> _txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, Integer.parseInt(font))));
+			mntmFont.addActionListener(e -> _txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, Integer.parseInt(font))));
 			mnFont.add(mntmFont);
 		}
 		
@@ -303,7 +303,7 @@ public class Gui
 		
 		final JMenuItem mntmAbout = new JMenuItem("About");
 		mntmAbout.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmAbout.addActionListener(_ -> new frmAbout());
+		mntmAbout.addActionListener(e -> new frmAbout());
 		mnHelp.add(mntmAbout);
 		
 		// Set icons.

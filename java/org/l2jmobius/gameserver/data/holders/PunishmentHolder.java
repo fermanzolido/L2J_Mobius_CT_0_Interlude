@@ -37,7 +37,7 @@ public class PunishmentHolder
 	{
 		if (!task.isExpired())
 		{
-			_holder.computeIfAbsent(String.valueOf(task.getKey()), _ -> new ConcurrentHashMap<>()).put(task.getType(), task);
+			_holder.computeIfAbsent(String.valueOf(task.getKey()), key -> new ConcurrentHashMap<>()).put(task.getType(), task);
 		}
 	}
 	

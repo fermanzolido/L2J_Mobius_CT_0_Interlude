@@ -55,7 +55,7 @@ public class TimerExecutor<T>
 	 */
 	private boolean addTimer(TimerHolder<T> holder)
 	{
-		final Set<TimerHolder<T>> timers = _timers.computeIfAbsent(holder.getEvent(), _ -> ConcurrentHashMap.newKeySet());
+		final Set<TimerHolder<T>> timers = _timers.computeIfAbsent(holder.getEvent(), event -> ConcurrentHashMap.newKeySet());
 		removeAndCancelTimers(timers, holder::isEqual);
 		return timers.add(holder);
 	}

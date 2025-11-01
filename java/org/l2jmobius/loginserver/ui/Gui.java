@@ -104,7 +104,7 @@ public class Gui
 		
 		final JMenuItem mntmShutdown = new JMenuItem("Shutdown");
 		mntmShutdown.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmShutdown.addActionListener(_ ->
+		mntmShutdown.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Shutdown LoginServer?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, SHUTDOWN_OPTIONS, SHUTDOWN_OPTIONS[1]) == 0)
 			{
@@ -115,7 +115,7 @@ public class Gui
 		
 		final JMenuItem mntmRestart = new JMenuItem("Restart");
 		mntmRestart.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmRestart.addActionListener(_ ->
+		mntmRestart.addActionListener(e ->
 		{
 			if (JOptionPane.showOptionDialog(null, "Restart LoginServer?", "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, RESTART_OPTIONS, RESTART_OPTIONS[1]) == 0)
 			{
@@ -130,7 +130,7 @@ public class Gui
 		
 		final JMenuItem mntmBannedIps = new JMenuItem("Banned IPs");
 		mntmBannedIps.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmBannedIps.addActionListener(_ ->
+		mntmBannedIps.addActionListener(e ->
 		{
 			LoginController.getInstance().getBannedIps().clear();
 			LoginServer.getInstance().loadBanFile();
@@ -143,7 +143,7 @@ public class Gui
 		
 		_chckbxmntmEnabled = new JCheckBoxMenuItem("Enabled");
 		_chckbxmntmEnabled.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		_chckbxmntmEnabled.addActionListener(_ ->
+		_chckbxmntmEnabled.addActionListener(e ->
 		{
 			_chckbxmntmEnabled.setSelected(true);
 			_chckbxmntmDisabled.setSelected(false);
@@ -161,7 +161,7 @@ public class Gui
 		
 		_chckbxmntmDisabled = new JCheckBoxMenuItem("Disabled");
 		_chckbxmntmDisabled.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		_chckbxmntmDisabled.addActionListener(_ ->
+		_chckbxmntmDisabled.addActionListener(e ->
 		{
 			_chckbxmntmEnabled.setSelected(false);
 			_chckbxmntmDisabled.setSelected(true);
@@ -178,7 +178,7 @@ public class Gui
 		
 		_chckbxmntmGmOnly = new JCheckBoxMenuItem("GM only");
 		_chckbxmntmGmOnly.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		_chckbxmntmGmOnly.addActionListener(_ ->
+		_chckbxmntmGmOnly.addActionListener(e ->
 		{
 			_chckbxmntmEnabled.setSelected(false);
 			_chckbxmntmDisabled.setSelected(false);
@@ -208,7 +208,7 @@ public class Gui
 		{
 			final JMenuItem mntmFont = new JMenuItem(font);
 			mntmFont.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-			mntmFont.addActionListener(_ -> _txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, Integer.parseInt(font))));
+			mntmFont.addActionListener(e -> _txtrConsole.setFont(new Font("Monospaced", Font.PLAIN, Integer.parseInt(font))));
 			mnFont.add(mntmFont);
 		}
 		
@@ -218,7 +218,7 @@ public class Gui
 		
 		final JMenuItem mntmAbout = new JMenuItem("About");
 		mntmAbout.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		mntmAbout.addActionListener(_ -> new frmAbout());
+		mntmAbout.addActionListener(e -> new frmAbout());
 		mnHelp.add(mntmAbout);
 		
 		// Set icons.

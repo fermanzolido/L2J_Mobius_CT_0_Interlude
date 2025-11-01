@@ -3826,7 +3826,7 @@ public class Config
 						
 						final String hostAddress = ia.getAddress().getHostAddress();
 						final int subnetPrefixLength = ia.getNetworkPrefixLength();
-						final int subnetMaskInt = IntStream.rangeClosed(1, subnetPrefixLength).reduce((r, _) -> (r << 1) + 1).orElse(0) << (32 - subnetPrefixLength);
+						final int subnetMaskInt = IntStream.rangeClosed(1, subnetPrefixLength).reduce((r, e) -> (r << 1) + 1).orElse(0) << (32 - subnetPrefixLength);
 						final int hostAddressInt = Arrays.stream(hostAddress.split("\\.")).mapToInt(Integer::parseInt).reduce((r, e) -> (r << 8) + e).orElse(0);
 						final int subnetAddressInt = hostAddressInt & subnetMaskInt;
 						final String subnetAddress = ((subnetAddressInt >> 24) & 0xFF) + "." + ((subnetAddressInt >> 16) & 0xFF) + "." + ((subnetAddressInt >> 8) & 0xFF) + "." + (subnetAddressInt & 0xFF);

@@ -674,7 +674,7 @@ public interface IXmlReader
 	 */
 	default void forEach(Node node, Consumer<Node> action)
 	{
-		forEach(node, _ -> true, action);
+		forEach(node, it -> true, action);
 	}
 	
 	/**
