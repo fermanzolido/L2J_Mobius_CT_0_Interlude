@@ -92,7 +92,7 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 		final String html = HtmCache.getInstance().getHtm(player, "data/scripts/conquerablehalls/FortressOfResistance/partisan_ordery_brakel001.htm");
 		if (html != null)
 		{
-			msg.setHtml(html);
+			msg.setHtml(player, html);
 			msg.replace("%nextSiege%", TimeUtil.formatDate(_hall.getSiegeDate().getTime(), "yyyy-MM-dd HH:mm:ss"));
 		}
 		player.sendPacket(msg);
@@ -128,7 +128,7 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 		
 		synchronized (this)
 		{
-			npc.getSpawn().stopRespawn();
+			npc.getSpawn().setRespawnState(false);
 			npc.deleteMe();
 			cancelSiegeTask();
 			endSiege();

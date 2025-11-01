@@ -59,8 +59,7 @@ public class MagicalDamage extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		// TODO: Prevents double damage for all cubic skills.
-		if (effector.isAlikeDead() || (effector instanceof Cubic))
+		if (effector.isAlikeDead())
 		{
 			return;
 		}
@@ -74,7 +73,17 @@ public class MagicalDamage extends AbstractEffect
 		final boolean bss = skill.useSpiritShot() && effector.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
 		final boolean mcrit = Formulas.calcMCrit(effector.getMCriticalHit(effected, skill));
 		final byte shld = Formulas.calcShldUse(effector, effected, skill);
-		final int damage = (int) Formulas.calcMagicDam(effector, effected, skill, shld, sps, bss, mcrit);
+
+		double damage = 0;
+		if (effector instanceof Cubic)
+		{
+			damage = Formulas.calcMagicDam((Cubic) effector, effected, skill, mcrit, shld);
+		}
+		else
+		{
+			damage = Formulas.calcMagicDam(effector, effected, skill, shld, sps, bss, mcrit);
+		}
+
 		if (damage > 0)
 		{
 			// Manage attack or cast break of the target (calculating rate, sending message...)

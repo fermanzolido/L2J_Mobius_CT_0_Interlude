@@ -57,8 +57,7 @@ public class HpDrain extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		// TODO: Unhardcode Cubic Skill to avoid double damage
-		if (effector.isAlikeDead() || (effector instanceof Cubic) || effector.isAffectedByAbnormalType(AbnormalType.INVINCIBILITY) || effector.isAffectedByAbnormalType(AbnormalType.ABNORMAL_INVINCIBILITY))
+		if (effector.isAlikeDead() || effector.isAffectedByAbnormalType(AbnormalType.INVINCIBILITY) || effector.isAffectedByAbnormalType(AbnormalType.ABNORMAL_INVINCIBILITY))
 		{
 			return;
 		}

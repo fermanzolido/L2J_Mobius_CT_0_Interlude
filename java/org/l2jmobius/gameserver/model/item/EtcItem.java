@@ -55,15 +55,18 @@ public class EtcItem extends ItemTemplate
 		_type = set.getEnum("etcitem_type", EtcItemType.class, EtcItemType.NONE);
 		
 		// l2j custom - EtcItemType.SHOT
-		switch (getDefaultAction())
+		if (getDefaultAction() != null)
 		{
-			case SOULSHOT:
-			case SUMMON_SOULSHOT:
-			case SUMMON_SPIRITSHOT:
-			case SPIRITSHOT:
+			switch (getDefaultAction())
 			{
-				_type = EtcItemType.SHOT;
-				break;
+				case SOULSHOT:
+				case SUMMON_SOULSHOT:
+				case SUMMON_SPIRITSHOT:
+				case SPIRITSHOT:
+				{
+					_type = EtcItemType.SHOT;
+					break;
+				}
 			}
 		}
 		

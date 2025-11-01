@@ -73,6 +73,8 @@ import org.l2jmobius.gameserver.model.actor.enums.creature.Team;
 import org.l2jmobius.gameserver.model.actor.enums.player.TeleportWhereType;
 import org.l2jmobius.gameserver.model.actor.holders.creature.InvulSkillHolder;
 import org.l2jmobius.gameserver.model.actor.instance.GrandBoss;
+import org.l2jmobius.gameserver.model.actor.instance.Door;
+import org.l2jmobius.gameserver.model.actor.instance.Monster;
 import org.l2jmobius.gameserver.model.actor.instance.QuestGuard;
 import org.l2jmobius.gameserver.model.actor.stat.CreatureStat;
 import org.l2jmobius.gameserver.model.actor.status.CreatureStatus;
@@ -900,11 +902,6 @@ public abstract class Creature extends WorldObject
 	public void teleToLocation(ILocational loc)
 	{
 		teleToLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getHeading(), loc.getInstanceId(), 0);
-	}
-	
-	public void teleToLocation(TeleportWhereType teleportWhere)
-	{
-		teleToLocation(MapRegionManager.getInstance().getTeleToLocation(this, teleportWhere), true);
 	}
 	
 	private boolean canUseRangeWeapon()
@@ -2641,6 +2638,31 @@ public abstract class Creature extends WorldObject
 		setAI(null);
 	}
 	
+	public boolean isWalker()
+	{
+		return false;
+	}
+
+	public boolean isMonster()
+	{
+		return false;
+	}
+
+	public Monster asMonster()
+	{
+		return null;
+	}
+
+	public boolean isDoor()
+	{
+		return false;
+	}
+
+	public Door asDoor()
+	{
+		return null;
+	}
+
 	protected void calculateRewards(Creature killer)
 	{
 	}
@@ -7182,5 +7204,15 @@ public abstract class Creature extends WorldObject
 	public void removeBuffInfoTime(BuffInfo info)
 	{
 		_buffFinishTask.removeBuffInfo(info);
+	}
+
+	public void teleToLocation(TeleportWhereType teleportWhere)
+	{
+		teleToLocation(MapRegionManager.getInstance().getTeleToLocation(this, teleportWhere), true);
+	}
+
+	public void teleToLocation(TeleportWhereType teleportWhere, boolean randomOffset)
+	{
+		teleToLocation(MapRegionManager.getInstance().getTeleToLocation(this, teleportWhere), randomOffset);
 	}
 }

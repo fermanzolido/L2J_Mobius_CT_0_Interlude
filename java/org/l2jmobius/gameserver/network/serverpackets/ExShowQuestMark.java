@@ -23,13 +23,15 @@ import org.l2jmobius.gameserver.network.ServerPackets;
 /**
  * @author Luca Baldi
  */
+import org.l2jmobius.gameserver.model.quest.Quest;
+
 public class ExShowQuestMark extends ServerPacket
 {
 	private final int _questId;
 	
-	public ExShowQuestMark(int questId)
+	public ExShowQuestMark(Quest quest)
 	{
-		_questId = questId;
+		_questId = quest.getId();
 	}
 	
 	@Override

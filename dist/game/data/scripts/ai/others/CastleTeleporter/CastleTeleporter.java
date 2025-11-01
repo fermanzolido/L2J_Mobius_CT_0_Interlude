@@ -72,7 +72,7 @@ public class CastleTeleporter extends AbstractNpcAI
 		if (event.equalsIgnoreCase("TELEPORT_EXECUTE"))
 		{
 			final int region = MapRegionManager.getInstance().getMapRegionLocId(npc.getX(), npc.getY());
-			final NpcSay msg = new NpcSay(npc, ChatType.NPC_SHOUT, "The defenders of " + npc.getCastle().getName() + " castle will be teleported to the inner castle.");
+			final NpcSay msg = new NpcSay(npc.getObjectId(), ChatType.NPC_SHOUT, npc.getId(), "The defenders of " + npc.getCastle().getName() + " castle will be teleported to the inner castle.");
 			npc.getCastle().oustAllPlayers();
 			npc.setScriptValue(0);
 			

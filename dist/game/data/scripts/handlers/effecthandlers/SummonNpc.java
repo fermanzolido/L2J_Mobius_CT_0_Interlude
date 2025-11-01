@@ -112,7 +112,7 @@ public class SummonNpc extends AbstractEffect
 			}
 			case "EffectPoint":
 			{
-				final Skill signetSkill = _signetSkillId > 0 ? new Skill(_signetSkillId, skill.getLevel()) : null;
+				final Skill signetSkill = _signetSkillId > 0 ? SkillData.getInstance().getSkill(_signetSkillId, skill.getLevel()) : null;
 				if (signetSkill == null)
 				{
 					LOGGER.warning(SummonNpc.class.getSimpleName() + ": Not a signet skill Id: " + _signetSkillId + ", skill ID:" + skill.getId());

@@ -22,8 +22,7 @@ package org.l2jmobius.gameserver.model.actor.instance;
 
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.ai.CreatureAI;
-import org.l2jmobius.gameserver.ai.AbstractAI.CtrlIntention;
-import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.ai.Intention;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.enums.creature.InstanceType;
@@ -59,26 +58,14 @@ public class EffectPoint extends Npc
 		_skill = skill;
 		if (_skill != null)
 		{
-			getAI().setIntention(CtrlIntention.AI_INTENTION_CAST, _skill, this);
+			getAI().setIntention(Intention.CAST, _skill, this);
 		}
 	}
 
 	@Override
-	public CreatureAI getAI()
+	protected CreatureAI initAI()
 	{
-		CreatureAI ai = _ai;
-		if (ai == null)
-		{
-			synchronized (this)
-			{
-				ai = _ai;
-				if (ai == null)
-				{
-					_ai = ai = new CreatureAI(this);
-				}
-			}
-		}
-		return ai;
+		return new CreatureAI(this);
 	}
 	
 	@Override

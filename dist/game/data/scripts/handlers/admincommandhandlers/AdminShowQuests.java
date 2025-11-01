@@ -318,7 +318,7 @@ public class AdminShowQuests implements IAdminCommandHandler
 			{
 				case "COMPLETED":
 				{
-					qs.exitQuest(params[3].equals("1"));
+					qs.exitQuest(Boolean.parseBoolean(params[3]));
 					break;
 				}
 				case "DELETE":
@@ -326,7 +326,7 @@ public class AdminShowQuests implements IAdminCommandHandler
 					Quest.deleteQuestInDb(qs, true);
 					qs.exitQuest(true);
 					target.sendPacket(new QuestList(target));
-					target.sendPacket(new ExShowQuestMark(qs.getQuest().getId()));
+					target.sendPacket(new ExShowQuestMark(qs.getQuest()));
 					break;
 				}
 				case "CREATE":

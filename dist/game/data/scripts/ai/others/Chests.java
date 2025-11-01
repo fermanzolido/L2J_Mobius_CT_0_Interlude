@@ -21,6 +21,7 @@ import java.util.List;
 import org.l2jmobius.gameserver.ai.Intention;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Chest;
@@ -151,7 +152,7 @@ public class Chests extends AbstractNpcAI
 					if (getRandom(100) < 50)
 					{
 						npc.setTarget(npc);
-						npc.doCast(4245, 1, false, false);
+						npc.doCast(SkillData.getInstance().getSkill(4245, 1));
 					}
 					final Creature originalAttacker = isSummon ? attacker.getSummon() : attacker;
 					chest.setRunning();

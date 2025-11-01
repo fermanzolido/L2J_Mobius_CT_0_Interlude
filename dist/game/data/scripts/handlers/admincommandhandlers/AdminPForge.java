@@ -192,13 +192,13 @@ public class AdminPForge implements IAdminCommandHandler
 	
 	private void showValuesUsage(Player activeChar)
 	{
-		activeChar.sendSysMessage("Usage: //forge_values opcode1[ opcode2[ opcode3]] ;[ format]");
+		activeChar.sendMessage("Usage: //forge_values opcode1[ opcode2[ opcode3]] ;[ format]");
 		showMainPage(activeChar);
 	}
 	
 	private void showSendUsage(Player activeChar, String[] opCodes, String format)
 	{
-		activeChar.sendSysMessage("Usage: //forge_send sc|sb|cs opcode1[;opcode2[;opcode3]][ format value1 ... valueN] ");
+		activeChar.sendMessage("Usage: //forge_send sc|sb|cs opcode1[;opcode2[;opcode3]][ format value1 ... valueN] ");
 		if (opCodes == null)
 		{
 			showMainPage(activeChar);
@@ -211,7 +211,9 @@ public class AdminPForge implements IAdminCommandHandler
 	
 	private void showMainPage(Player activeChar)
 	{
-		AdminHtml.showAdminHtml(activeChar, "pforge/main.htm");
+		final NpcHtmlMessage html = new NpcHtmlMessage(0);
+		html.setFile(activeChar, "data/html/admin/pforge/main.htm");
+		activeChar.sendPacket(html);
 	}
 	
 	private void showValuesPage(Player activeChar, String[] opCodes, String format)
@@ -267,7 +269,9 @@ public class AdminPForge implements IAdminCommandHandler
 		
 		valuesHtml = valuesHtml.replace("%editors%", editorsHtml);
 		valuesHtml = valuesHtml.replace("%send_bypass%", sendBypass);
-		activeChar.sendPacket(new NpcHtmlMessage(valuesHtml));
+		final NpcHtmlMessage html = new NpcHtmlMessage(0);
+		html.setHtml(valuesHtml);
+		activeChar.sendPacket(html);
 	}
 	
 	@Override
@@ -292,7 +296,7 @@ public class AdminPForge implements IAdminCommandHandler
 				final String[] opCodes = getOpCodes(st);
 				if (!validateOpCodes(opCodes))
 				{
-					activeChar.sendSysMessage("Invalid op codes!");
+					activeChar.sendMessage("Invalid op codes!");
 					showValuesUsage(activeChar);
 					return false;
 				}
@@ -303,7 +307,7 @@ public class AdminPForge implements IAdminCommandHandler
 					format = st.nextToken();
 					if (!validateFormat(format))
 					{
-						activeChar.sendSysMessage("Format invalid!");
+						activeChar.sendMessage("Format invalid!");
 						showValuesUsage(activeChar);
 						return false;
 					}
@@ -332,7 +336,7 @@ public class AdminPForge implements IAdminCommandHandler
 				final String method = st.nextToken();
 				if (!validateMethod(method))
 				{
-					activeChar.sendSysMessage("Invalid method!");
+					activeChar.sendMessage("Invalid method!");
 					showSendUsage(activeChar, null, null);
 					return false;
 				}
@@ -340,7 +344,7 @@ public class AdminPForge implements IAdminCommandHandler
 				final String[] opCodes = st.nextToken().split(";");
 				if (!validateOpCodes(opCodes))
 				{
-					activeChar.sendSysMessage("Invalid op codes!");
+					activeChar.sendMessage("Invalid op codes!");
 					showSendUsage(activeChar, null, null);
 					return false;
 				}
@@ -351,7 +355,7 @@ public class AdminPForge implements IAdminCommandHandler
 					format = st.nextToken();
 					if (!validateFormat(format))
 					{
-						activeChar.sendSysMessage("Format invalid!");
+						activeChar.sendMessage("Format invalid!");
 						showSendUsage(activeChar, null, null);
 						return false;
 					}
@@ -401,7 +405,7 @@ public class AdminPForge implements IAdminCommandHandler
 					{
 						if (!st.hasMoreTokens())
 						{
-							activeChar.sendSysMessage("Not enough values!");
+							activeChar.sendMessage("Not enough values!");
 							showSendUsage(activeChar, null, null);
 							return false;
 						}
@@ -587,7 +591,7 @@ public class AdminPForge implements IAdminCommandHandler
 				{
 					bb.flip();
 					final GamePacketHandler handler = new GamePacketHandler();
-					final ReadablePacket<GameClient> packet = handler.handlePacket(new ReadableBuffer(bb), activeChar.getClient());
+					final ReadablePacket<GameClient> packet = handler.handlePacket(new ReadableBuffer(bb.array()), activeChar.getClient());
 					if (packet != null)
 					{
 						packet.run();

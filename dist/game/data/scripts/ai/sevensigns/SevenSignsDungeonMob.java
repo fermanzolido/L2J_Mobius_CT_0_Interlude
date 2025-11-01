@@ -16,6 +16,7 @@
  */
 package ai.sevensigns;
 
+import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.enums.player.TeleportWhereType;
@@ -40,7 +41,7 @@ public class SevenSignsDungeonMob extends AbstractNpcAI
 		if (SevenSigns.getInstance().isSealValidationPeriod() && (playerCabal != winningCabal))
 		{
 			player.sendMessage("You have been teleported to the nearest town because you do not belong to the winning cabal.");
-			player.teleToLocation(TeleportWhereType.TOWN);
+			player.teleToLocation(MapRegionManager.getInstance().getTeleportToLocation(player, TeleportWhereType.TOWN));
 		}
 		return super.onAggro(npc, player, isPet);
 	}

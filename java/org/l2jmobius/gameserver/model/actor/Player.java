@@ -9440,7 +9440,7 @@ public class Player extends Playable
 		setInvul(true);
 		setInvisible(true);
 		sendPacket(new ObservationEnter(loc));
-		teleToLocation(loc, false);
+		teleToLocation((ILocational) loc, false);
 		broadcastUserInfo();
 	}
 	
@@ -9503,7 +9503,7 @@ public class Player extends Playable
 	{
 		setTarget(null);
 		
-		teleToLocation(_lastLoc, false);
+		teleToLocation((ILocational) _lastLoc, false);
 		unsetLastLocation();
 		sendPacket(new ObservationExit(getLocation()));
 		setParalyzed(false);
@@ -9537,7 +9537,7 @@ public class Player extends Playable
 		setTarget(null);
 		sendPacket(new ExOlympiadMode(0));
 		setInstanceId(0);
-		teleToLocation(_lastLoc, true);
+		teleToLocation((ILocational) _lastLoc, true);
 		if (!isGM())
 		{
 			setInvisible(false);
@@ -10355,7 +10355,7 @@ public class Player extends Playable
 			// if the rent of a wyvern expires while over a flying zone, tp to down before unmounting
 			if (checkLandingState() && (_mountType == MountType.WYVERN))
 			{
-				teleToLocation(TeleportWhereType.TOWN);
+				super.teleToLocation(TeleportWhereType.TOWN);
 			}
 			
 			if (dismount()) // this should always be true now, since we teleported already
@@ -10439,7 +10439,7 @@ public class Player extends Playable
 		{
 			if (!isGM() && isIn7sDungeon() && (SevenSigns.getInstance().getPlayerCabal(getObjectId()) != SevenSigns.getInstance().getCabalHighestScore()))
 			{
-				teleToLocation(TeleportWhereType.TOWN);
+			super.teleToLocation(TeleportWhereType.TOWN);
 				setIn7sDungeon(false);
 				sendMessage("You have been teleported to the nearest town due to the beginning of the Seal Validation period.");
 			}
@@ -10448,7 +10448,7 @@ public class Player extends Playable
 		{
 			if (!isGM() && isIn7sDungeon() && (SevenSigns.getInstance().getPlayerCabal(getObjectId()) == SevenSigns.CABAL_NULL))
 			{
-				teleToLocation(TeleportWhereType.TOWN);
+				super.teleToLocation(TeleportWhereType.TOWN);
 				setIn7sDungeon(false);
 				sendMessage("You have been teleported to the nearest town because you have not signed for any cabal.");
 			}
